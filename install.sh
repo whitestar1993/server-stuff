@@ -28,7 +28,8 @@ sudo ufw --force enable
 
 # Install essential packages: curl, git, vim, docker, python3, pip
 echo "Installing essential packages..."
-sudo apt install -y curl git vim docker.io python3 python3-pip
+sudo apt install -y curl git vim docker.io python3 python3-pip python3-apt
+pip3 install python-on-whales
 sudo systemctl enable --now docker
 sudo usermod -aG docker $USERNAME
 

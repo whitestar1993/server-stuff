@@ -1,0 +1,18 @@
+# Ignore env files
+.env
+*.env
+env/
+secrets/
+secret/
+*.key
+*.pem
+
+# Ignore Docker junk
+*.log
+*.pid
+
+# Ignore editor/IDE temp files
+.vscode/
+.idea/
+*.swp
+*~

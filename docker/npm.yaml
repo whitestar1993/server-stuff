@@ -1,0 +1,40 @@
+# Nginx Proxy Manager
+
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      # These ports are in format <host-port>:<container-port>
+      - '80:80' # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81' # Admin Web Port
+      # Add any other Stream port you want to expose
+      # - '21:21' # FTP
+
+    environment:
+      # Uncomment this if you want to change the location of
+      # the SQLite DB file within the container
+      # DB_SQLITE_FILE: "/data/database.sqlite"
+
+      # Uncomment this if IPv6 is not enabled on your host
+      DISABLE_IPV6: 'true'
+
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+  
+  #---------------------------------------------------------------------#
+  #     Homarr - A simple, yet powerful dashboard for your server.      #
+  #---------------------------------------------------------------------#
+  homarr:
+    container_name: homarr
+    image: ghcr.io/homarr-labs/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
+      - /srv/docker/appdata:/appdata
+    environment:
+      - SECRET_ENCRYPTION_KEY=your_64_character_hex_string # <--- can be generated with `openssl rand -hex 32`
+    ports:
+      - '7575:7575'

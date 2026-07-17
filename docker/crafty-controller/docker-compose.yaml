@@ -1,11 +1,25 @@
 configs:
   ts-serve:
     content: |
-      {"TCP":{"443":{"HTTPS":true}},
-      "Web":{"$${TS_CERT_DOMAIN}:443":
-          {"Handlers":{"/":
-          {"Proxy":"http://127.0.0.1:25565"}}}},
-      "AllowFunnel":{"$${TS_CERT_DOMAIN}:443":false}}
+      {
+        "TCP": {
+          "443": {
+            "HTTPS": true
+          }
+        },
+        "Web": {
+          "${TS_CERT_DOMAIN}:443": {
+            "Handlers": {
+              "/": {
+                "Proxy": "http://127.0.0.1:25565"
+              }
+            }
+          }
+        },
+        "AllowFunnel": {
+          "${TS_CERT_DOMAIN}:443": false
+        }
+      }
 
 services:
 # Make sure you have updated/checked the .env file with the correct variables.
@@ -34,8 +48,7 @@ services:
             - /dev/net/tun:/dev/net/tun # Network configuration for Tailscale to work
         cap_add:
             - net_admin # Tailscale requirement
-        #ports:
-            # Vanilla
+        ports:
             - "8100:8100"
             - "25575:25575"
             - "24454:24454/udp"
@@ -59,11 +72,6 @@ services:
         restart: always
         environment:
             - TZ=America/Los_Angeles
-        #ports:
-            #- "8443:8443" # HTTPS
-            #- "8123:8123" # DYNMAP
-            #- "19132:19132/udp" # BEDROCK
-            #- "25500-25600:25500-25600" # MC SERV PORT RANGE
         volumes:
             - /home/core/docker/crafty-4/backups:/crafty/backups
             - /home/core/docker/crafty-4/logs:/crafty/logs

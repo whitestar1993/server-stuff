@@ -45,6 +45,7 @@ services:
             - TS_LOCAL_ADDR_PORT=127.0.0.1:41234 # The <addr>:<port> for the healthz endpoint
             - TS_ACCEPT_DNS=true # Uncomment when using MagicDNS
             - TS_AUTH_ONCE=true
+            - TS_CERT_DOMAIN=minecraft.rex-pumpkinseed.ts.net
         configs:
             - source: ts-serve
               target: /config/serve.json

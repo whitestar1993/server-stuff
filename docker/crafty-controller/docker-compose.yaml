@@ -11,7 +11,7 @@ configs:
           "${TS_CERT_DOMAIN}:443": {
             "Handlers": {
               "/": {
-                "Proxy": "http://127.0.0.1:25565"
+                "Proxy": "http://127.0.0.1:8443"
               }
             }
           }

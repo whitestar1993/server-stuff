@@ -52,7 +52,7 @@ services:
             - "8100:8100"
             - "25575:25575"
             - "24454:24454/udp"
-          #- 0.0.0.0:${SERVICEPORT}:${SERVICEPORT} # Binding port ${SERVICEPORT} to the local network - may be removed if only exposure to your Tailnet is required
+            - 0.0.0.0:${SERVICEPORT}:${SERVICEPORT} # Binding port ${SERVICEPORT} to the local network - may be removed if only exposure to your Tailnet is required
         # If any DNS issues arise, use your preferred DNS provider by uncommenting the config below
         #dns:
         #  - ${DNS_SERVER}

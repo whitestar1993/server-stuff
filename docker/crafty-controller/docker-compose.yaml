@@ -7,6 +7,8 @@ services:
             - TZ=America/Los_Angeles
         ports:
             - "8443:8443" # HTTPS
+            - "17480:25565"
+            - "24454:24454"
         volumes:
             - /home/core/docker/crafty-4/backups:/crafty/backups
             - /home/core/docker/crafty-4/logs:/crafty/logs

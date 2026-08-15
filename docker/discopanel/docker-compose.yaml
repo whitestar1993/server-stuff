@@ -35,7 +35,7 @@ services:
       - /home/core/docker/discopanel/data:/app/data
       - /home/core/docker/discopanel/backups:/app/backups
       - /tmp/discopanel:/app/tmp
-      - /home/core/src-mc:/app/src-mc #whitelist and ops file
+      # - /home/core/src-mc:/app/src-mc #whitelist and ops file
 
       # Configuration file, uncomment if you are using a config file (optional, see config.example.yaml for all available options).
       #- ./config.yaml:/app/config.yaml:ro
